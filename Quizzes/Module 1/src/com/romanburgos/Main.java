@@ -10,7 +10,7 @@ public class Main {
         numbers[1] = 5;
         numbers[2] = 22;
         numbers[3] = 69;
-        numbers[4] = 10;
+        numbers[4] = -20;
         numbers[5] = 72;
         numbers[6] = 100;
         numbers[7] = 10;
@@ -22,15 +22,14 @@ public class Main {
         printArrays(numbers);
 
         //selection sort
-        System.out.println("\n\nSelection Sorted");
         selectionSort(numbers);
+        System.out.println("\n\nSelection Sorted: ");
         printArrays(numbers);
 
         //bubble sort
-        //System.out.println("\n\nBubble Sorted");
-        //bubbleSort(numbers);
-        //printArrays(numbers);
-
+        System.out.println("\n\nBubble Sorted: ");
+        bubbleSort(numbers);
+        printArrays(numbers);
 
     }
 
@@ -54,21 +53,20 @@ public class Main {
 
     private static void selectionSort(int[] arr)
     {
-        for (int lastIndexSorted = arr.length - 1; lastIndexSorted > 0; lastIndexSorted--)
+        for (int lastSortedIndex = arr.length -1; lastSortedIndex > 0; lastSortedIndex--)
         {
-            int largestIndex = 0;
-
-            for (int i = 1; i <= lastIndexSorted; i++)
+            int smallestIndex = 0;
+            for(int i = 1; i <= lastSortedIndex; i++)
             {
-                if (arr[i] > arr[largestIndex])
+                if (arr[i] < arr[smallestIndex])
                 {
-                    largestIndex = i;
+                    smallestIndex = i;
                 }
             }
 
-            int swap = lastIndexSorted;
-            arr[lastIndexSorted] = arr[largestIndex];
-            arr[largestIndex] = swap;
+            int swap = arr[lastSortedIndex];
+            arr[lastSortedIndex] = arr[smallestIndex];
+            arr[smallestIndex] = swap;
         }
     }
 
